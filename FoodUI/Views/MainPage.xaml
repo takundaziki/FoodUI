@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+
+             x:Class="FoodUI.MainPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,Auto">
+             <!-- 1. Main image -->
+            <Image Grid.Row="0" Source="model.jpg" Aspect="AspectFill" />
+            <!-- 2. Description-->
+            <Frame Grid.Row="1" Margin="0,-35,0,25" CornerRadius="30" HasShadow="False">
+                <Grid RowDefinitions="Auto,Auto,*">
+                    <!-- Box mark-->
+                    <BoxView Grid.Row="0" WidthRequest="{OnPlatform iOS='100', Android='80'}" BackgroundColor="{DynamicResource MainColor}" HorizontalOptions="End" Rotation="-3" Margin="{OnPlatform iOS='0,8,55,0', Android='0,0,55,0'}" VerticalOptions="Start"/>
+                    <!-- Title-->
+                    <Label Grid.Row="0" LineHeight="1.5" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Center" FontSize="{OnPlatform iOS='25', Android='20'}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Find The Best "/>
+                                <Span Text="&#10; Meal Plan for you now!"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!-- Description-->
+                    <Label Grid.Row="1" Text="Go to meal plans. "
+                           FontAttributes="Bold" TextColor="red" FontSize="{OnPlatform iOS='18', Android='15'}" LineHeight="1.4" Margin="30,0"
+                           HorizontalTextAlignment="Center"/>
+                    <!-- Button-->
+                    <Button Grid.Row="2" CornerRadius="33" HeightRequest="66" WidthRequest="66" 
+                           ImageSource="direct.png"  HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,15" Clicked="Button_Clicked" />
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

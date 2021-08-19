@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FoodUI.Views.PopularMeals">
+    <ContentPage.Content>
+        <ScrollView>
+            <!-- Main layout-->
+            <Grid RowDefinitions="Auto,Auto,Auto,*,Auto,Auto" ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand" Padding="30,60,30,15">
+
+                <!-- 3. Header-->
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                    <!--Profile picture-->
+                    <ImageButton Grid.Column="0" Grid.RowSpan="2" Source="Women.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="#f1f0f4" CornerRadius="10"/>
+                    <!--Welcome & Name-->
+                    <Label Grid.Column="1" Grid.Row="0" Text="Welcome" TextColor="Black" FontAttributes="Bold" Margin="20,0,0,0"/>
+                    <Label Grid.Column="1" Grid.Row="1" Text="Claire!" FontAttributes="Bold" Margin="20,0,0,0"/>
+                    
+                   
+                </Grid>
+                <!--Search & Action Button-->
+               <SearchBar Grid.Column="0" Grid.Row="1" Margin="-5,10,0,10" BackgroundColor="Transparent" Placeholder="Search meal plans" />
+               <Button Grid.Column="1" Grid.Row="1" BackgroundColor="{DynamicResource MainColor}" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="50" ImageSource="List"/>
+
+                <!-- 4. Popular Meals-->
+                <Label Grid.Column="0" Grid.Row="2" Text="Popular Meal Plans" TextColor="#858788" FontSize="20" FontAttributes="Bold" />
+                
+                 
+                <CollectionView Grid.ColumnSpan="2" Grid.Row="3" HorizontalScrollBarVisibility="Never"
+                                 ItemsSource="{Binding popularMeals}"
+                                 Margin="-20,0,-25,0"
+                                 ItemsLayout="HorizontalList"
+                                 HeightRequest="380">
+                                 <CollectionView.ItemTemplate> 
+                                   <DataTemplate>
+                                        <StackLayout Padding="2,10,20,30">
+                                           <Frame Padding="20,10,20,30" WidthRequest="220" HeightRequest="320" VerticalOptions="FillAndExpand" CornerRadius="20" HorizontalOptions="Start" HasShadow="False">
+                                               <Grid RowDefinitions="*,Auto,Auto" ColumnDefinitions="*,Auto">
+                                                    <Frame Grid.ColumnSpan="2" Grid.Row="0" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" Padding="0">
+                                                     <Image Source="{Binding Picture}" Aspect="AspectFill" />
+                                            
+
+                                        </Frame>
+                                                   <Label Grid.Column="0" Grid.Row="1" Text="{Binding Name}" FontAttributes="Bold" Padding="0,10,0,0"/>
+                                                   <Label Grid.Column="0" Grid.Row="2" Text="{Binding Rating}" TextColor="{DynamicResource MainColor}" FontAttributes="Bold"/>
+                                                   <ImageButton Clicked="Button_Clicked" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Source="goicon.png" HorizontalOptions="End" WidthRequest="35" HeightRequest="35" CornerRadius="8" VerticalOptions="Center" />
+                                               </Grid>
+                                           </Frame>
+                                       </StackLayout>
+                                    </DataTemplate>
+                                 </CollectionView.ItemTemplate>
+  
+                 </CollectionView>
+
+              <!--5. Recommended--> 
+              <Label Grid.Column="0" Grid.Row="4" Text="Recommended Meal Plans" TextColor="#858788" FontSize="18" FontAttributes="Bold" />
+              
+              <CollectionView Grid.ColumnSpan="2" Grid.Row="5" Margin="-20,20,-25,0" HorizontalScrollBarVisibility="Never"
+                              ItemsSource="{Binding recommended}"
+                              ItemsLayout="HorizontalList"
+                              HeightRequest="150">
+                              <CollectionView.ItemTemplate> 
+                                <DataTemplate>
+                                   <StackLayout>
+                                      <Frame Margin="0,0,10,0" HasShadow="False" CornerRadius="20">
+                                         <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                            <Frame Grid.Column="0" Grid.RowSpan="3" Margin="0,0,20,0"  VerticalOptions="CenterAndExpand" WidthRequest="75" HeightRequest="85" HasShadow="False" CornerRadius="10" Padding="0" IsClippedToBounds="True">
+                                                <Image Source="{Binding Picture}" Aspect="AspectFill"/>
+                                             </Frame>
+                                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" FontAttributes="Bold"/>
+                                             <Label Grid.Column="1" Grid.Row="1" Text="{Binding Description}" TextColor="Silver" FontAttributes="Bold"/>
+                                             <Label Grid.Column="1" Grid.Row="2" Text="⭐⭐⭐⭐⭐"  FontSize="13" />
+                                             <Image Grid.Column="2" Grid.RowSpan="3" Source="DetailsArrow.png"/>
+                                          </Grid>
+                                      </Frame>
+                                   </StackLayout>
+                                 </DataTemplate>
+                              </CollectionView.ItemTemplate>
+                 </CollectionView>
+
+            </Grid>
+       </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
